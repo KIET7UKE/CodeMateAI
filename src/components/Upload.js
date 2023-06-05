@@ -110,7 +110,7 @@ function Upload() {
   };
 
   return (
-    <div className='flex flex-col bg-red-300 h-[690px]'>
+    <div className='flex flex-col bg-red-300 h-[750px]'>
       <div className='mt-[50px] text-3xl font-mono flex justify-center'>
         Upload your code files here...
       </div>
