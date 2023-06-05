@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+## Jod Builder
+Jod-Builder is a type of web application that caters to developers in their daily tasks. One of its features includes a platform for executing and testing code snippets in different programming languages. Whether you're just starting to learn a new language or an experienced developer debugging code, Jod-Builder is there to help you out.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+1. The provided web interface is designed to be user-friendly, allowing easy access and interaction. 
+2. Users can upload code files in various programming languages and have them processed. 
+3. Code snippets can be executed, and results are provided in real-time. 
+4. The interface can generate detailed pdf reports that include code outputs and other relevant information. 
 
-## Available Scripts
+## Tech-Stack Used
+1. React
+2. Firebase
+3. Piston API
 
-In the project directory, you can run:
+## How to run locally
+In order to operate the application on your own device, you need to follow these steps:
 
-### `npm start`
+##### 1. Clone the repository:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```shell
+git clone https://github.com/KIET7UKE/Jod-Builder.git
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##### 2. Install dependencies:
 
-### `npm test`
+```
+cd Jod-Builder
+npm install --force
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### 3. Set up Firebase:
 
-### `npm run build`
+Create a new Firebase project.
+Update the Firebase configuration in `src/firebase/firebaseConfig.js` with your own Firebase project details.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### 4. Start the development server:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
