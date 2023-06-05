@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faDownload,
-  faUpload,
-} from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { storage } from './Firebase';
 import { ref, uploadBytes } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,7 +8,10 @@ import jsPDF from 'jspdf';
 
 function Upload() {
   const [fileUpload, setFileUpload] = useState(null);
-  const [selectedFiles, setSelectedFiles] = useState({ fileName: '', fileContent: '' });
+  const [selectedFiles, setSelectedFiles] = useState({
+    fileName: '',
+    fileContent: '',
+  });
   const [apiData, setAPIData] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState('');
 
@@ -21,14 +21,14 @@ function Upload() {
     const reader = new FileReader();
     reader.readAsText(selectedFiles);
     reader.onload = () => {
-        setSelectedFiles({
-            fileName: selectedFiles.name,
-            fileContent: reader.result,
-        })
-    }
+      setSelectedFiles({
+        fileName: selectedFiles.name,
+        fileContent: reader.result,
+      });
+    };
     reader.onerror = () => {
-        console.log("file error", reader.error);
-      };
+      console.log('file error', reader.error);
+    };
   };
 
   // For adding more files
@@ -36,10 +36,9 @@ function Upload() {
     document.getElementById('file-upload').click();
   };
 
-
-//   For generating reports
+  //   For generating reports
   const handleGenerateReport = () => {
-    console.log(selectedFiles)
+    console.log(selectedFiles);
     if (fileUpload == null) return;
     if (selectedLanguage.length > 0) {
       const mainRef = ref(storage, `files/${fileUpload.name + uuidv4()}`);
@@ -77,7 +76,6 @@ function Upload() {
     }
   };
 
-
   // For downloading reports
   const handleDownloadReport = () => {
     const doc = new jsPDF();
@@ -111,25 +109,56 @@ function Upload() {
     setSelectedLanguage(event.target.value);
   };
 
-
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col bg-red-300 h-[670px]'>
       <div className='mt-[50px] text-3xl font-mono flex justify-center'>
         Upload your code files here...
       </div>
-      <div className='flex justify-center mt-5'>
-        <input
-          id='file-upload'
-          type='file'
-          accept='.txt, .doc, .docx, .pdf'
-          multiple
-          onChange={handleFileUpload}
-        />
-        <button
-          onClick={handleAddMore}
-          className='bg-green-400 rounded-md w-[120px] font-semibold ml-5'>
-          <FontAwesomeIcon icon={faUpload} /> Add More
-        </button>
+      <div className='flex flex-col'>
+        <div className='flex items-center justify-center w-full'>
+          <label
+            htmlFor='file-upload'
+            className='flex flex-col items-center justify-center w-[400px] mt-2 h-64 border-2 border-dashed border-red-950 rounded-lg cursor-pointer bg-red-200 dark:hover:bg-red-100'>
+            <div className='flex flex-col items-center justify-center pt-5 pb-6'>
+              <svg
+                aria-hidden='true'
+                className='w-10 h-10 mb-3 text-gray-400'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'>
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={2}
+                  d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'
+                />
+              </svg>
+              <p className='mb-2 text-sm text-gray-500 dark:text-gray-400'>
+                <span className='font-semibold'>Click to upload</span> or drag
+                and drop
+              </p>
+              <p className='text-xs text-gray-500 dark:text-gray-400'>
+                TXT, DOCX, PDF(MAX. 800x400px)
+              </p>
+            </div>
+            <input
+              className='hidden'
+              id='file-upload'
+              type='file'
+              accept='.txt, .doc, .docx, .pdf'
+              multiple
+              onChange={handleFileUpload}
+            />
+          </label>
+        </div>
+        <div className='flex justify-center mt-5'>
+          <button
+            onClick={handleAddMore}
+            className='bg-red-200 rounded-md w-[120px] font-semibold'>
+            <FontAwesomeIcon icon={faUpload} /> Add More
+          </button>
+        </div>
         {selectedFiles.length > 0 && (
           <ul>
             {selectedFiles.map((file, index) => {
@@ -140,7 +169,7 @@ function Upload() {
       </div>
       <div className='flex justify-center mt-5'>
         <select
-          className='bg-gray-200 rounded-md w-[160px] h-[30px]'
+          className='bg-red-200 rounded-md w-[160px] h-[30px]'
           value={selectedLanguage}
           onChange={handleLanguageChange}>
           <option value=''>Select a language</option>
@@ -155,37 +184,66 @@ function Upload() {
           <option value='swift'>Swift</option>
           <option value='kotlin'>Kotlin</option>
         </select>
-        {selectedLanguage && <p>Selected language: {selectedLanguage}</p>}
+        {selectedLanguage && <p className='font-semibold ml-2'>Selected language: {selectedLanguage}</p>}
       </div>
       <div className='flex flex-col justify-center mt-7'>
         <div className='flex justify-center'>
           <button
-            className='bg-red-400 rounded-md w-[135px] h-[30px] font-semibold'
+            className='bg-red-200 rounded-md w-[135px] h-[30px] font-semibold'
             onClick={handleGenerateReport}>
             Generate Report
           </button>
         </div>
         <div className='flex justify-center'>
           {apiData && (
-            <div>
-              <table className='border-2 border-black'>
-                <thead>
+            // <div>
+            //   <table className='border-2 border-black mt-5'>
+            //     <thead>
+            //       <tr>
+            //         <th>File Name</th>
+            //         <th>Language</th>
+            //         <th>Download</th>
+            //       </tr>
+            //     </thead>
+            //     <tbody>
+            //       <tr key={selectedFiles.fileName}>
+            //         <td>{selectedFiles.fileName}</td>
+            //         <td>{apiData.language}</td>
+            //         <td>
+            //           <button onClick={handleDownloadReport}>
+            //             <FontAwesomeIcon icon={faDownload} /> Download
+            //           </button>
+            //         </td>
+            //       </tr>
+            //     </tbody>
+            //   </table>
+            // </div>
+            <div className='relative overflow-x-auto shadow-md sm:rounded-lg mt-5 w-[400px]'>
+              <table className='w-full text-sm text-left text-black dark:text-black'>
+                <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                   <tr>
-                    <th>File Name</th>
-                    <th>Language</th>
-                    <th>Download</th>
+                    <th scope='col' className='px-6 py-3'>
+                      File Name
+                    </th>
+                    <th scope='col' className='px-6 py-3'>
+                      Language
+                    </th>
+                    <th scope='col' className='px-6 py-3'>
+                      Download
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                    <tr key={selectedFiles.fileName}>
-                      <td>{selectedFiles.fileName}</td>
-                      <td>{apiData.language}</td>
-                      <td>
-                        <button onClick={handleDownloadReport}>
-                          <FontAwesomeIcon icon={faDownload} /> Download
-                        </button>
-                      </td>
-                    </tr>
+                  <tr key={selectedFiles.fileName}>
+                    <td>{selectedFiles.fileName}</td>
+                    <td>{apiData.language}</td>
+
+                    <td>
+                      <button onClick={handleDownloadReport}>
+                        <FontAwesomeIcon icon={faDownload} /> Download
+                      </button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
