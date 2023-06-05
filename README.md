@@ -1,5 +1,5 @@
 ## Jod Builder
-Jod-Builder is a type of web application that caters to developers in their daily tasks. One of its features includes a platform for executing and testing code snippets in different programming languages. Whether you're just starting to learn a new language or an experienced developer debugging code, Jod-Builder is there to help you out.
+Jod-Builder is a type of web application that caters to developers in their daily tasks. One of its features includes a platform for executing and testing code snippets in different programming languages. Whether you're just starting to learn a new language or an experienced developer debugging code.
 
 ## Features
 1. The provided web interface is designed to be user-friendly, allowing easy access and interaction. 
