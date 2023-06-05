@@ -8,9 +8,11 @@ Jod-Builder is a type of web application that caters to developers in their dail
 4. The interface can generate detailed pdf reports that include code outputs and other relevant information. 
 
 ## Tech-Stack Used
-1. React
-2. Firebase
-3. Piston API
+1. React.js
+2. Node.js
+3. Tailwind CSS
+4. Firebase
+5. Piston API
 
 ## How to run locally
 In order to operate the application on your own device, you need to follow these steps:
