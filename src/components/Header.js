@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
   return (
     <div>
-      <nav className='bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800'>
+      <nav className='bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 xl:w-50 xxl:w-40'>
         <div className='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
           <a href='/' className='flex items-center'>
             <img
